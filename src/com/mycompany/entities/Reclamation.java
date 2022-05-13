@@ -16,23 +16,26 @@ public class Reclamation {
     private String email;
     private String subject;
     private String reclamation;
-    private User user;
+    private String userId;
 
-    public Reclamation(int reclamationId, String state, String email, String subject, String reclamation, User user) {
+    public Reclamation(int reclamationId, String state, String email, String subject, String reclamation, String userId) {
         this.reclamationId = reclamationId;
         this.state = state;
         this.email = email;
         this.subject = subject;
         this.reclamation = reclamation;
-        this.user = user;
+        this.userId = userId;
     }
 
-    public Reclamation(String state, String email, String subject, String reclamation, User user) {
+    public Reclamation(String state, String email, String subject, String reclamation, String userId) {
         this.state = state;
         this.email = email;
         this.subject = subject;
         this.reclamation = reclamation;
-        this.user = user;
+        this.userId = userId;
+    }
+
+    public Reclamation() {
     }
 
     public int getReclamationId() {
@@ -55,8 +58,8 @@ public class Reclamation {
         return reclamation;
     }
 
-    public User getUser() {
-        return user;
+    public String getUserId() {
+        return userId;
     }
 
     public void setReclamationId(int reclamationId) {
@@ -79,13 +82,13 @@ public class Reclamation {
         this.reclamation = reclamation;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     @Override
     public String toString() {
-        return "reclamation{" + "reclamationId=" + reclamationId + ", state=" + state + ", email=" + email + ", subject=" + subject + ", reclamation=" + reclamation + ", user=" + user + '}';
+        return "reclamation{" + "reclamationId=" + reclamationId + ", state=" + state + ", email=" + email + ", subject=" + subject + ", reclamation=" + reclamation + ", userId=" + userId + '}';
     }
     
     
