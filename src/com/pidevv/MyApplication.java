@@ -35,7 +35,7 @@ public class MyApplication {
         // use two network threads instead of one
         updateNetworkThreadCount(2);
 
-        theme = UIManager.initFirstTheme("/theme");
+        theme = UIManager.initFirstTheme("/theme_1");
 
         // Enable Toolbar on all Forms by default
         Toolbar.setGlobalToolbar(true);
@@ -60,10 +60,10 @@ public class MyApplication {
             return;
         }
          //new ListBooking(theme).show(); 
-        //new SignUpForm(theme).show();
+        //   new SignUpForm(theme).show();
         //new SignInForm(theme).show();
         //athl
-     //new ListUser(theme).show();
+ //    new ListUser(theme).show();
         new ListStay(theme).show();
    // new ListStay(theme).show();
        // new BookingAdd(theme).show();
