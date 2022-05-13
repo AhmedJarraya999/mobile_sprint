@@ -11,6 +11,8 @@ import com.codename1.ui.Container;
 import com.codename1.ui.Display;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
+import com.codename1.ui.layouts.BorderLayout;
+import com.codename1.ui.layouts.BoxLayout;
 import entities.Experience;
 import java.util.ArrayList;
 import services.ExperienceService;
@@ -23,21 +25,26 @@ public class listExperienceForm extends BaseForm{
     Form current;
     public listExperienceForm(Form previous) {
         current= this;
+        
+        add(new Label("Check Experiences!"));
         setTitle("List Of Experiences");
         
+         Button btn_add = new Button("Add Experience");
+         btn_add.addActionListener(e-> new addExperienceForm(current).show());
+         
         SpanLabel sp = new SpanLabel();
         sp.setText(ExperienceService.getInstance().getAllExperiences().toString());
-        add(sp);
+        addAll(btn_add,sp);
         getToolbar().addCommandToLeftBar("⬅",null, (e) -> previous.showBack());
-        
-        ExperienceService experienceService = new ExperienceService();
-        
-        ArrayList<Experience> experiences = experienceService.getAllExperiences();
-        
-        experiences.forEach((e)->{
-            addFieldExp(e.getTitle(),e.getContent());
-        });
-        
+//        
+//        ExperienceService experienceService = new ExperienceService();
+//        
+//        ArrayList<Experience> experiences = experienceService.getAllExperiences();
+//        
+//        experiences.forEach((e)->{
+//            addFieldExp(e.getTitle(),e.getContent());
+//        });
+//        
       
     }
     

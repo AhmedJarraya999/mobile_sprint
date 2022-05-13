@@ -11,7 +11,7 @@ package entities;
  */
 public class Comment {
     int id , author , id_exp , likes ;
-    String date;
+    String date,content;
 
     public Comment(int id, int author, int id_exp, int likes, String date) {
         this.id = id;
@@ -19,6 +19,7 @@ public class Comment {
         this.id_exp = id_exp;
         this.likes = likes;
         this.date = date;
+        this.content=content;
     }
 
     public Comment(int author, int id_exp, int likes, String date) {
@@ -26,6 +27,19 @@ public class Comment {
         this.id_exp = id_exp;
         this.likes = likes;
         this.date = date;
+        this.content=content;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+    
+    
+    public Comment() {
     }
 
     public int getId() {
@@ -70,8 +84,9 @@ public class Comment {
 
     @Override
     public String toString() {
-        return "Comment{" + "id=" + id + ", author=" + author + ", id_exp=" + id_exp + ", likes=" + likes + ", date=" + date + '}';
+        return "Comment{" + "id=" + id + ", author=" + author + ", id_exp=" + id_exp + ", likes=" + likes + ", date=" + date + ", content=" + content + '}';
     }
+
     
     
     

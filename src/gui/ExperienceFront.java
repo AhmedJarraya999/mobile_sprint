@@ -24,13 +24,14 @@ public class ExperienceFront extends BaseForm{
        setLayout(BoxLayout.y());
        setTitle("Front");
        
-        Button btn_add = new Button("Add Experience");
-        Button btn_list = new Button("List Experience");
+       
+        Button btn_listexperience = new Button("List Experience");
+        Button btn_listcomment = new Button("List Comment");
+       
+        btn_listexperience.addActionListener(e-> new listExperienceForm(current).show());
+        btn_listcomment.addActionListener(e-> new listCommentForm(current).show());
         
-        btn_add.addActionListener(e-> new addExperienceForm(current).show());
-        btn_list.addActionListener(e-> new listExperienceForm(current).show());
-        
-        addAll(btn_add,btn_list);
+        addAll(btn_listexperience,btn_listcomment);
     }
     
 }

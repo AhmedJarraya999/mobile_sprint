@@ -5,8 +5,8 @@
  */
 package gui;
 
+import static com.codename1.io.Log.e;
 import com.codename1.ui.Button;
-import com.codename1.ui.Command;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
@@ -14,37 +14,37 @@ import com.codename1.ui.TextField;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
-import entities.Experience;
+import entities.Comment;
 import java.util.Date;
-import services.ExperienceService;
-
+import services.CommentService;
 /**
  *
  * @author tasni
  */
-public class addExperienceForm extends BaseForm{
-
-    public addExperienceForm(Form previous) {
-        setTitle("New Experience");
+public class addCommentForm extends BaseForm{
+    
+    public addCommentForm(Form previous) {
+        
+        setTitle("New Comment");
         setLayout(BoxLayout.y());
-        add(new Label("Add a new Experience"));
+        add(new Label("Add a new Commnet"));
         getToolbar().addCommandToLeftBar("⬅",null, (e) -> previous.showBack());
         
-        TextField tf_title = new TextField("","Title");
+        
         TextField tf_content = new TextField("","Content");
-        Button btn_post = new Button("Add Experience");
+        Button btn_post = new Button("Add Comment");
         
         btn_post.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                if ((tf_title.getText().length()==0)||(tf_content.getText().length()==0))
+                if ((tf_content.getText().length()==0))
                     Dialog.show("Alert", "Blank Fields", "OK", null);
                     
                 else 
                 { try {
                   String date = new Date().toString(); 
-                  Experience e = new Experience(1, 0,tf_title.getText(), tf_content.getText(), date);
-                  if (new ExperienceService().addExperience(e))
+                  Comment c = new Comment(1,6,0,date);
+                  if (new CommentService().addComment(c))
                        Dialog.show("Succecsss", "good", "OK", null);
                     } catch (NumberFormatException e) {
                          Dialog.show("Alert", "WRONG", "OK", null);
@@ -53,10 +53,9 @@ public class addExperienceForm extends BaseForm{
             }
         });
         
-        addAll(tf_title,tf_content,btn_post);
-        
-               
+        addAll(tf_content,btn_post);
     }
-    
+
+ 
     
 }

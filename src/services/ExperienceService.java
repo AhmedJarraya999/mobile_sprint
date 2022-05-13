@@ -62,12 +62,12 @@ public class ExperienceService {
     }
     
       public boolean addExperience(Experience e){
-        String url=Statics.BASE_URL+"/experience/Front"
-                +"id_author="+e.getId_author()
-                + "likes=" + e.getLikes()
-                + "title=" + e.getTitle()
-                + "content=" + e.getContent()
-                + "date=" + e.getDate();
+        String url=Statics.BASE_URL+"/experience/addJSON/new/"
+                +"?id_author="+e.getId_author()
+                + "?likes=" + e.getLikes()
+                + "?title=" + e.getTitle()
+                + "?content=" + e.getContent()
+                + "?date=" + e.getDate();
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -103,7 +103,7 @@ public class ExperienceService {
       }
       
       public ArrayList<Experience> getAllExperiences(){
-          String url=Statics.BASE_URL+"/experience/searchAll/";
+          String url=Statics.BASE_URL+"/experience/AllExperiences/";
           req.setUrl(url);
           req.setPost(false);
           req.addResponseListener(new ActionListener<NetworkEvent>() {
