@@ -37,7 +37,7 @@ public class ModifierStay extends BaseForm {
         current = this ;
         setToolbar(tb);
         getTitleArea().setUIID("Container");
-        setTitle("Modifier Abonnement");
+        setTitle("Modify Stay");
         getContentPane().setScrollVisible(false);
         
         

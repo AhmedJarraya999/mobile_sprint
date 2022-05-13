@@ -134,7 +134,7 @@ public class SignUpForm extends BaseForm {
          
                 
                 UserService.getInstance().addUser(u);
-                sendMail(res);
+               // sendMail(res);
                  new SignInForm(res).show();
           
             } catch (Exception ex) {

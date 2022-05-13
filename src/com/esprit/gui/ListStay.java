@@ -166,7 +166,7 @@ public class ListStay extends BaseForm{
                 
                 image.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED_FILL);
         }
-        Button lajouter = new Button("Ajouter Abonnement");
+        Button lajouter = new Button("Add a Stay");
         
         lajouter.requestFocus();
         

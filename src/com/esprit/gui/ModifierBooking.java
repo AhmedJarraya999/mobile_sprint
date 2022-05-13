@@ -22,6 +22,13 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
 import com.esprit.entities.Booking;
 import com.esprit.services.BookingService;
+import com.sun.mail.smtp.SMTPTransport;
+import java.util.Date;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  *
@@ -70,6 +77,7 @@ public class ModifierBooking extends BaseForm {
           r.setFirstDate(firstdate.getText());
           r.setStayId(1);
           r.setUserId(1);
+          sendMail(res);
       
        
        //appel fonction modfier reclamation men service
@@ -125,4 +133,46 @@ public class ModifierBooking extends BaseForm {
         
         
     }
+    
+      
+    
+  public void sendMail(Resources res) {
+        try {
+            
+            Properties props = new Properties();
+                props.put("mail.transport.protocol", "smtp"); //SMTP protocol
+		props.put("mail.smtps.host", "smtp.gmail.com"); //SMTP Host
+		props.put("mail.smtps.auth", "true"); //enable authentication
+             
+            Session session = Session.getInstance(props,null); // aleh 9rahach 5ater mazlna masabinach javax.mail .jar
+            
+            
+            MimeMessage msg = new MimeMessage(session);
+            
+            msg.setFrom(new InternetAddress("Booking <monEmail@domaine.com>"));
+            msg.setRecipients(Message.RecipientType.TO, "jarraya.ahmed@esprit.tn ");
+            msg.setSubject("Application nom  : Confirmation du ");
+            msg.setSentDate(new Date(System.currentTimeMillis()));
+            
+           //String mp = ServiceUtilisateur.getInstance().getPasswordByEmail(email.getText().toString(), res);//mp taw narj3lo
+           String txt = "Bienvenue sur AppNom : Votre Booking a été crée";
+           
+           
+           msg.setText(txt);
+           
+          SMTPTransport  st = (SMTPTransport)session.getTransport("smtps") ;
+            
+          st.connect("smtp.gmail.com",465,"adress ","9632587410Maxi");
+           
+          st.sendMessage(msg, msg.getAllRecipients());
+            
+          System.out.println("server response : "+st.getLastServerResponse());
+          
+        }catch(Exception e ) {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    
 }

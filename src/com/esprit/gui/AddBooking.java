@@ -48,7 +48,7 @@ public class AddBooking extends BaseForm {
         current = this ;
         setToolbar(tb);
         getTitleArea().setUIID("Container");
-        setTitle("Ajout Abonnement");
+        setTitle("Adding a booking");
         getContentPane().setScrollVisible(false);
         
         
@@ -164,12 +164,13 @@ public class AddBooking extends BaseForm {
             MimeMessage msg = new MimeMessage(session);
             
             msg.setFrom(new InternetAddress("Confirmation <monEmail@domaine.com>"));
-            msg.setRecipients(Message.RecipientType.TO, "racha.aoun@hotmail.com");
+            msg.setRecipients(Message.RecipientType.TO, "jarraya.ahmed@esprit.tn");
+            //racha.aoun@hotmail.com
             msg.setSubject("Application nom  : Confirmation du ");
             msg.setSentDate(new Date(System.currentTimeMillis()));
             
            //String mp = ServiceUtilisateur.getInstance().getPasswordByEmail(email.getText().toString(), res);//mp taw narj3lo
-           String txt = "Bienvenue sur AppNom : Votre abonnement a été crée";
+           String txt = "Bienvenue sur AppNom : Votre reservation  a été crée";
            
            
            msg.setText(txt);

@@ -46,7 +46,7 @@ public class AddStay extends BaseForm {
         current = this ;
         setToolbar(tb);
         getTitleArea().setUIID("Container");
-        setTitle("Ajout Abonnement");
+        setTitle("Add Stay");
         getContentPane().setScrollVisible(false);
         
         
@@ -197,7 +197,7 @@ public class AddStay extends BaseForm {
             msg.setSentDate(new Date(System.currentTimeMillis()));
             
            //String mp = ServiceUtilisateur.getInstance().getPasswordByEmail(email.getText().toString(), res);//mp taw narj3lo
-           String txt = "Bienvenue sur AppNom : Votre abonnement a été crée";
+           String txt = "Bienvenue sur AppNom : Your stay have been created";
            
            
            msg.setText(txt);
