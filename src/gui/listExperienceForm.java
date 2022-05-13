@@ -34,10 +34,10 @@ public class listExperienceForm extends BaseForm{
         
         ArrayList<Experience> experiences = experienceService.getAllExperiences();
         
-//        experiences.forEach((e)->{
-//            addFieldExp(e.getTitle(),e.getContent());
-//        });
-//        
+        experiences.forEach((e)->{
+            addFieldExp(e.getTitle(),e.getContent());
+        });
+        
       
     }
     
