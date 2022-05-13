@@ -183,9 +183,9 @@ public class ModifierUser extends BaseForm {
             
             MimeMessage msg = new MimeMessage(session);
             
-            msg.setFrom(new InternetAddress("Booking <monEmail@domaine.com>"));
+            msg.setFrom(new InternetAddress("User Modification <monEmail@domaine.com>"));
             msg.setRecipients(Message.RecipientType.TO, "jarraya.ahmed@esprit.tn");
-            msg.setSubject("Application nom  : Confirmation du ");
+            msg.setSubject("Star Tours  :  User Modification ");
             msg.setSentDate(new Date(System.currentTimeMillis()));
             
            //String mp = ServiceUtilisateur.getInstance().getPasswordByEmail(email.getText().toString(), res);//mp taw narj3lo

@@ -86,7 +86,7 @@ public class ModifierBooking extends BaseForm {
            new ListBooking(res).show();
        }
         });
-       Button btnAnnuler = new Button("Annuler");
+       Button btnAnnuler = new Button("Cnacel");
        btnAnnuler.addActionListener(e -> {
            new ListBooking(res).show();
        });
@@ -151,7 +151,7 @@ public class ModifierBooking extends BaseForm {
             
             msg.setFrom(new InternetAddress("Booking <monEmail@domaine.com>"));
             msg.setRecipients(Message.RecipientType.TO, "jarraya.ahmed@esprit.tn ");
-            msg.setSubject("Application nom  : Confirmation du ");
+            msg.setSubject(" Star Tours  : Booking Modification ");
             msg.setSentDate(new Date(System.currentTimeMillis()));
             
            //String mp = ServiceUtilisateur.getInstance().getPasswordByEmail(email.getText().toString(), res);//mp taw narj3lo

@@ -95,7 +95,7 @@ public class ModifierStay extends BaseForm {
            new ListStay(res).show();
        }
         });
-       Button btnAnnuler = new Button("Annuler");
+       Button btnAnnuler = new Button("Cancel");
        btnAnnuler.addActionListener(e -> {
            new ListStay(res).show();
        });

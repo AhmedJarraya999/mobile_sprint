@@ -164,7 +164,7 @@ public class AddBooking extends BaseForm {
             
             MimeMessage msg = new MimeMessage(session);
             
-            msg.setFrom(new InternetAddress("Confirmation <monEmail@domaine.com>"));
+            msg.setFrom(new InternetAddress("Ajout Booking <monEmail@domaine.com>"));
             msg.setRecipients(Message.RecipientType.TO, "jarraya.ahmed@esprit.tn");
             //racha.aoun@hotmail.com
             msg.setSubject("Application nom  : Confirmation du ");
