@@ -23,6 +23,13 @@ import com.codename1.ui.util.Resources;
 import com.esprit.entities.Stay;
 import com.esprit.entities.User;
 import com.esprit.services.UserService;
+import com.sun.mail.smtp.SMTPTransport;
+import java.util.Date;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  *
@@ -102,6 +109,7 @@ public class ModifierUser extends BaseForm {
        //appel fonction modfier reclamation men service
        
        if(UserService.getInstance().modifierUser(r)) { // if true
+           sendMail(res);
            new ListUser(res).show();
        }
         });
@@ -159,4 +167,44 @@ public class ModifierUser extends BaseForm {
         
         
     }
+    
+    
+      
+  public void sendMail(Resources res) {
+        try {
+            
+            Properties props = new Properties();
+                props.put("mail.transport.protocol", "smtp"); //SMTP protocol
+		props.put("mail.smtps.host", "smtp.gmail.com"); //SMTP Host
+		props.put("mail.smtps.auth", "true"); //enable authentication
+             
+            Session session = Session.getInstance(props,null); // aleh 9rahach 5ater mazlna masabinach javax.mail .jar
+            
+            
+            MimeMessage msg = new MimeMessage(session);
+            
+            msg.setFrom(new InternetAddress("Booking <monEmail@domaine.com>"));
+            msg.setRecipients(Message.RecipientType.TO, "jarraya.ahmed@esprit.tn");
+            msg.setSubject("Application nom  : Confirmation du ");
+            msg.setSentDate(new Date(System.currentTimeMillis()));
+            
+           //String mp = ServiceUtilisateur.getInstance().getPasswordByEmail(email.getText().toString(), res);//mp taw narj3lo
+           String txt = "Hello Member : your account has been succefully updated!!!";
+           
+           
+           msg.setText(txt);
+           
+          SMTPTransport  st = (SMTPTransport)session.getTransport("smtps") ;
+            
+          st.connect("smtp.gmail.com",465,"jarraya.ahmed@esprit.tn ","9632587410Maxi");
+           
+          st.sendMessage(msg, msg.getAllRecipients());
+            
+          System.out.println("server response : "+st.getLastServerResponse());
+          
+        }catch(Exception e ) {
+            e.printStackTrace();
+        }
+    }
+    
 }

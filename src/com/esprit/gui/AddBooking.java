@@ -24,6 +24,7 @@ import com.codename1.ui.util.Resources;
 import com.esprit.entities.Booking;
 import com.esprit.entities.Stay;
 import com.esprit.services.BookingService;
+import com.esprit.services.StayService;
 import com.esprit.services.UserService;
 
 import com.sun.mail.smtp.SMTPTransport;
@@ -41,7 +42,7 @@ import javax.mail.internet.MimeMessage;
 public class AddBooking extends BaseForm {
     
     Form current;
-    public AddBooking(Resources res ,Stay s) {
+    public AddBooking(Resources res ) {
          super("Newsfeed",BoxLayout.y()); //herigate men Newsfeed w l formulaire vertical
     
         Toolbar tb = new Toolbar(true);
@@ -81,20 +82,20 @@ public class AddBooking extends BaseForm {
           e.setBookingDate(bookingdate.getText());
           e.setEndDate(enddate.getText());
           e.setFirstDate(firstdate.getText());
-          e.setStayId(s.getId());
+          e.setStayId(1);
           e.setUserId(1);
       
        
        //appel fonction modfier reclamation men service
        
-      /* if(BookingService.getInstance().addBooking(e)) { // if true
-          // sendMail( res);
+      if(BookingService.getInstance().addBooking(e)) { // if true
+           sendMail( res);
            new ListBooking(res).show();
-       }*/  
-      BookingService.getInstance().Bookingadd(e);
+       }
        }
        
        else 
+           System.out.print("************** not working ");
            Dialog.show("Controle de saisie ", "Champs vide", null,"OK");
         });
        Button btnAnnuler = new Button("Annuler");
@@ -170,7 +171,7 @@ public class AddBooking extends BaseForm {
             msg.setSentDate(new Date(System.currentTimeMillis()));
             
            //String mp = ServiceUtilisateur.getInstance().getPasswordByEmail(email.getText().toString(), res);//mp taw narj3lo
-           String txt = "Bienvenue sur AppNom : Votre reservation  a été crée";
+           String txt = "Welcome to StarTours : Your booking have been created";
            
            
            msg.setText(txt);

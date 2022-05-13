@@ -317,7 +317,7 @@ public class ListStay extends BaseForm{
         
          lbook.addPointerPressedListener(l -> {
             System.out.println("hello add");
-          new AddBooking(res,e).show();
+          new AddBooking(res).show();
         });
          
         cnt.add(BorderLayout.CENTER,BoxLayout.encloseY(

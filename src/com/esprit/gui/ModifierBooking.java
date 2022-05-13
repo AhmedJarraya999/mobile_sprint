@@ -66,7 +66,7 @@ public class ModifierBooking extends BaseForm {
         bookingdate.setSingleLineTextArea(true);
          firstdate.setSingleLineTextArea(true);
          enddate.setSingleLineTextArea(true);
-        Button Add = new Button("Add");
+        Button Add = new Button("update");
        Add.setUIID("Button");
        
        //Event onclick btnModifer

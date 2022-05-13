@@ -21,7 +21,9 @@ import com.codename1.ui.TextField;
 import com.codename1.ui.Toolbar;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
+import com.esprit.entities.Booking;
 import com.esprit.entities.Stay;
+import com.esprit.services.BookingService;
 import com.esprit.services.StayService;
 
 import com.sun.mail.smtp.SMTPTransport;
@@ -36,10 +38,10 @@ import javax.mail.internet.MimeMessage;
  *
  * @author Asus
  */
-public class AddStay extends BaseForm {
+public class BookingAdd extends BaseForm {
     
     Form current;
-    public AddStay(Resources res ) {
+    public BookingAdd(Resources res ) {
          super("Newsfeed",BoxLayout.y()); //herigate men Newsfeed w l formulaire vertical
     
         Toolbar tb = new Toolbar(true);
@@ -52,65 +54,43 @@ public class AddStay extends BaseForm {
         
         super.addSideMenu(res);
         
-        TextField capacity = new TextField("", "capacity" , 20 , TextField.ANY);
-        TextField description = new TextField("", "description " , 20 , TextField.ANY);
-        
-        TextField photo = new TextField("", "photo " , 20 , TextField.ANY);
-        TextField startdateev = new TextField("", "startdateev " , 20 , TextField.ANY);
-        
-        TextField enddateev = new TextField("", "enddateev " , 20 , TextField.ANY);
-         TextField nbBooked = new TextField("", "nb Booked " , 20 , TextField.ANY);
-         
+          
+       TextField bookingdate = new TextField("", "bookingdate" , 20 , TextField.ANY);
+        TextField firstdate = new TextField("", "firstdate " , 20 , TextField.ANY);
+        TextField enddate = new TextField("", "enddate " , 20 , TextField.ANY);
             
         
         
         
         
-        capacity.setUIID("NewsTopLine");
-        description.setUIID("NewsTopLine");
-        photo.setUIID("NewsTopLine");
-        startdateev.setUIID("NewsTopLine");
-        
-        enddateev.setUIID("NewsTopLine");
-        nbBooked.setUIID("NewsTopLine");
+        bookingdate.setUIID("NewsTopLine");
+        firstdate.setUIID("NewsTopLine");
        
-        
-        enddateev.setSingleLineTextArea(true);
-         nbBooked.setSingleLineTextArea(true);
-        photo.setSingleLineTextArea(true);
-         startdateev.setSingleLineTextArea(true);
+         enddate.setUIID("NewsTopLine");
        
-        capacity.setSingleLineTextArea(true);
-         description.setSingleLineTextArea(true);
-        
-              //TextField date =new TextField(String.valueOf(e.getDate()), "Date " , 20 , TextField.ANY);
- 
-        
-        
-        
-        
-    
+        bookingdate.setSingleLineTextArea(true);
+         firstdate.setSingleLineTextArea(true);
+         enddate.setSingleLineTextArea(true);
         Button Add = new Button("Add");
        Add.setUIID("Button");
        
+            
        //Event onclick btnModifer
        
        Add.addPointerPressedListener(l ->   { 
-       if ((capacity.getText().length()!=0)||( description.getText().length()!=0)){
-           Stay e = new Stay();
-          e.setCapacity(capacity.getText());
-          e.setDescription(description.getText());
-          e.setEnddateav(enddateev.getText());
-          e.setNbBooked(nbBooked.getText());
-          e.setPhoto(photo.getText());
-          e.setStartdateav(startdateev.getText());
-       
-          e.setUsersId(1);
+       if ((bookingdate.getText().length()!=0)||( enddate.getText().length()!=0)){
+           Booking e = new Booking();
+           e.setBookingDate(bookingdate.getText());
+           e.setEndDate(enddate.getText());
+           e.setFirstDate(firstdate.getText());
+           e.setStayId(1);
+           
+        
       
        
        //appel fonction modfier reclamation men service
        
-       if(StayService.getInstance().addStay(e)) { // if true
+       if(BookingService.getInstance().addBooking(e)) { // if true
            sendMail( res);
            new ListStay(res).show();
        }
@@ -145,20 +125,14 @@ public class AddStay extends BaseForm {
         
         Container content = BoxLayout.encloseY(
                 l1, l2, 
-                new FloatingHint(capacity),
+                new FloatingHint(bookingdate),
                 createLineSeparator(),
-                new FloatingHint(description),
+                new FloatingHint(firstdate),
                 createLineSeparator(),
-                new FloatingHint(photo),
+                new FloatingHint(enddate),
                 createLineSeparator(),
-                new FloatingHint(startdateev),
-                createLineSeparator(),
-                
-                new FloatingHint(enddateev),
-                createLineSeparator(),
-                new FloatingHint(nbBooked),
-                createLineSeparator(),
-              
+               
+               
                 createLineSeparator(),//ligne de séparation
            
                 Add,
@@ -198,7 +172,7 @@ public class AddStay extends BaseForm {
             msg.setSentDate(new Date(System.currentTimeMillis()));
             
            //String mp = ServiceUtilisateur.getInstance().getPasswordByEmail(email.getText().toString(), res);//mp taw narj3lo
-           String txt = "Welcome to StarTours: Your stay have been created";
+           String txt = "Bienvenue sur AppNom : Votre Booking a été crée";
            
            
            msg.setText(txt);

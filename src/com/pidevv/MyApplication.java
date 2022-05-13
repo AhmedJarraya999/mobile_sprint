@@ -15,6 +15,7 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.io.NetworkEvent;
 import com.esprit.gui.AddBooking;
 import com.esprit.gui.AddStay;
+import com.esprit.gui.BookingAdd;
 import com.esprit.gui.ListBooking;
 import com.esprit.gui.ListStay;
 import com.esprit.gui.ListUser;
@@ -62,9 +63,10 @@ public class MyApplication {
         //new SignUpForm(theme).show();
         //new SignInForm(theme).show();
         //athl
-     new ListUser(theme).show();
-    //new ListStay(theme).show();
+     //new ListUser(theme).show();
+        new ListStay(theme).show();
    // new ListStay(theme).show();
+       // new BookingAdd(theme).show();
     }
 
     public void stop() {
